@@ -2,6 +2,7 @@
 """
 Defines City class.
 """
+
 from models.base_model import BaseModel
 
 
