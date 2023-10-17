@@ -95,7 +95,7 @@ class HBNBCommand(cmd.Cmd):
                 obj = eval(my_list[0])()
             else:
                 obj = eval(my_list[0])(**kwargs)
-                models.STORAGE.new(obj)
+                models.storage.new(obj)
             print(obj.id)
             obj.save()
 
@@ -110,7 +110,7 @@ class HBNBCommand(cmd.Cmd):
         of a given id use do_show.
         """
         argl = parse(arg)
-        objdict = models.STORAGE.all()
+        objdict = models.storage.all()
         if len(argl) == 0:
             print("** class name missing **")
         elif argl[0] not in HBNBCommand.__classes:
@@ -129,7 +129,7 @@ class HBNBCommand(cmd.Cmd):
         """
         argl = parse(arg)
         count = 0
-        for obj in models.STORAGE.all().values():
+        for obj in models.storage.all().values():
             if argl[0] == obj.__class__.__name__:
                 count += 1
         print(count)
@@ -140,7 +140,7 @@ class HBNBCommand(cmd.Cmd):
         use do_deltee
         """
         argl = parse(arg)
-        objdict = models.STORAGE.all()
+        objdict = models.storage.all()
         if len(argl) == 0:
             print("** class name missing **")
         elif argl[0] not in HBNBCommand.__classes:
@@ -151,7 +151,7 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
         else:
             del objdict["{}.{}".format(argl[0], argl[1])]
-            models.STORAGE.save()
+            models.storage.save()
 
     def do_all(self, arg):
         """
@@ -163,7 +163,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         else:
             objl = []
-            for obj in models.STORAGE.all().values():
+            for obj in models.storage.all().values():
                 if len(argl) > 0 and argl[0] == obj.__class__.__name__:
                     objl.append(obj.__str__())
                 elif len(argl) == 0:
@@ -176,7 +176,7 @@ class HBNBCommand(cmd.Cmd):
         a given attribute, use do_update
         """
         argl = parse(arg)
-        objdict = models.STORAGE.all()
+        objdict = models.storage.all()
 
         if len(argl) == 0:
             print("** class name missing **")
@@ -216,7 +216,7 @@ class HBNBCommand(cmd.Cmd):
                     obj.__dict__[k] = valtype(v)
                 else:
                     obj.__dict__[k] = v
-        models.STORAGE.save()
+        models.storage.save()
 
     def emptyline(self):
         """Do nothing upon receiving an empty line."""

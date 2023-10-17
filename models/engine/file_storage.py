@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Defines FileStorage class.
+Defines Filestorage class.
 """
 
 from models.base_model import BaseModel
@@ -13,7 +13,7 @@ from models.amenity import Amenity
 from models.state import State
 
 
-class FileStorage:
+class Filestorage:
     """
     A class for serializing and deserializing JSON objects.
 
