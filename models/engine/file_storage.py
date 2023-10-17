@@ -60,7 +60,8 @@ class FileStorage:
 
     def reload(self):
         """
-        Deserializes the objects from the JSON file and populates the dictionary.
+        Deserializes the objects from the JSON file and
+        populates the dictionary.
         """
         try:
             with open(self.__file_path, 'r', encoding="UTF-8") as f:
